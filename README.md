@@ -6,10 +6,10 @@ Uma API para o app de gerenciamento de investimentos financeiros
 ## Endpoints
 -Usuario
   -[Cadastrar](#cadastrar-usuario)
-  -[Detalhar-usuario](#detalhar-usuario)
-  -
-  -
-  -
+  -[Detalhar_usuario](#detalhar-usuario)
+-Investimento
+  -[Registrar](#salvar-investimento)
+  -[Detalhar_Investimento](#detalhar-investimento)
   -
 
 ### Cadastrar usuario
@@ -50,6 +50,50 @@ Uma API para o app de gerenciamento de investimentos financeiros
 
 ---
 
+### Salvar Investimento
+
+`POST`/api/investimento
+
+**Campos de requisição**
+
+| campo | tipo dele| obrigatorio| descrição
+|-------| ---------| -----------| ---------
+|idInvestimento| numero inteiro| sim| deve informar o numero de identificação do investimento
+|titulo| texto| sim| deve ser o nome do titulo, como CDB,LCA,LCI
+|tipoTaxa| texto| sim| deve conter o tipo de taxa que é aplicada sobre o titulo
+|juros| numero decimal| sim| deve ser um valor com até duas casas decimais
+|diasSaque| numero inteiro| sim| deve informar a quantidade de dias a se esperar para sacar
+|anos| numero inteiro| sim| deve informar quantos anos o dinheiro vai ficar aplicado
+|sobPercentual| boolean| sim| deve informar se os juros são ou não aplicados sobre a taxa 
+|quantidade| numero inteiro| sim| deve informar a quantidade de investimentos
+
+
+
+**Exemplo de corpo de requisição**
+```js
+{
+    idInvestimento:181183
+    titulos:'CDB',
+    tipoTaxa:'IPCA',
+    juros: 1.1,
+    Dias:30,
+    anos:7,
+    sobPercentual: true,
+    quantidade: 0;
+    
+}
+```
+
+**Códigos de Resposta**
+|código|descrição
+|-|-
+|201| investimento salvo com sucesso
+|400| os campos enviados são inválidos
+
+
+---
+
+
 ### Detalhar Usuario
 
 `GET` / api / usuario/{email}
@@ -71,3 +115,29 @@ Uma API para o app de gerenciamento de investimentos financeiros
 |-|-
 |201| usuario cadastrado com sucesso
 |404| usuario não encontrado
+
+### Detalhar Investimento
+
+`GET` / api / usuario/{idInvestimento}
+
+**Exemplo de corpo de requisição**
+```js
+{
+
+    idInvestimento:181183
+    titulos:'CDB',
+    tipoTaxa:'IPCA',
+    juros: 1.1,
+    Dias:30,
+    anos:7,
+    sobPercentual: true,
+    quantidade: 0;
+    
+}
+```
+
+**Códigos de Resposta**
+|código|descrição
+|-|-
+|201| Investimento encontrado com sucesso
+|404| Investimento não encontrado

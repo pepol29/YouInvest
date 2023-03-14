@@ -2,6 +2,7 @@ package br.com.fiap.YouInvest.models;
 
 
 public class Investimento{
+    private int idInvestimento;
     private String[] titulos = {"CDB", "LCI", "LCA"};
     private String[] tipoTaxa = {"IPCA", "CDI"};
     private float juros;
@@ -13,8 +14,9 @@ public class Investimento{
     public Investimento() {}
     
     
-	public Investimento(String[] titulos, String[] tipoTaxa, float juros, int diasSaque, int anos,
+	public Investimento(int idInvestimento, String[] titulos, String[] tipoTaxa, float juros, int diasSaque, int anos,
 			boolean sobPercentual, int quantidade) {
+        this.idInvestimento = idInvestimento
 		this.titulos = titulos;
 		this.tipoTaxa = tipoTaxa;
 		this.juros = juros;
@@ -22,6 +24,12 @@ public class Investimento{
 		this.anos = anos;
 		this.sobPercentual = sobPercentual;
 		this.quantidade = quantidade;
+	}
+    public int getidInvestimento() {
+		return idInvestimento;
+	}
+	public void setidInvestimento(int idInvestimento) {
+		this.idInvestimento = idInvestimento;
 	}
 	public String[] getTitulos() {
 		return titulos;
